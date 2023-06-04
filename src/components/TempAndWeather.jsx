@@ -1,7 +1,10 @@
 import React from 'react';
 
-export default function TempAndWeather() {
+export default function TempAndWeather(props) {
     return (
-        <p>Temperature and weather</p>
+        <div>
+            <h1>{props.cityName}</h1>
+            <p>Temperature: {props.temp}</p>
+        </div>
     )
 }

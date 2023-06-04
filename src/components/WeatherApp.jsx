@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import NavigationAndDate from './NavigationAndDate';
+import TempAndWeather from './TempAndWeather';
 
-export default function SearchAndLocation(props) {
+export default function WeatherApp(props) {
     const [cidade, setCidade] = useState("london");
     const [data, setData] = useState(null);
     // const [loading, setLoading] = useState(true);
@@ -9,6 +11,7 @@ export default function SearchAndLocation(props) {
     const APIKEY = '9d2e9a1845d97f44e0c3c9b98a003a63';
 
     const apiCall = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${APIKEY}`;
+    // https://api.openweathermap.org/data/2.5/weather?q=${london}&appid=${9d2e9a1845d97f44e0c3c9b98a003a63}
 
     const handleSearch = () => {
         fetch(apiCall)
@@ -55,6 +58,10 @@ export default function SearchAndLocation(props) {
             <button 
                 onClick={handleSearch}
             >Buscar</button>
+            <TempAndWeather
+                cityName={data.name}
+                temp={data.temp} />
+            <NavigationAndDate />
         </div>
     )
 }
